@@ -8,10 +8,18 @@ import 'package:islami_app/features/homescreen/tabs/quraan/constantmanger.dart';
 
 import 'suraitem.dart';
 
-class Quraan extends StatelessWidget {
-  final Constantmanger constantmanger = Constantmanger();
+class Quraan extends StatefulWidget {
 
   Quraan({super.key});
+
+  @override
+  State<Quraan> createState() => _QuraanState();
+}
+
+class _QuraanState extends State<Quraan> {
+  final Constantmanger constantmanger = Constantmanger();
+
+  List<int>filterlist=List.generate(114, (index) => index);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +40,10 @@ class Quraan extends StatelessWidget {
               children: [
                 Image.asset(ImageManager.islami_logo,),
                 CustumTextfieled(
+                  onChange: (text)
+                  {
+                  serachFunction(text);
+                  },
                   labelText: "Sura Name",
                  imageIcon:ImageIcon(AssetImage(IconManager.quran)),
 
@@ -63,8 +75,9 @@ class Quraan extends StatelessWidget {
                   textAlign: TextAlign.start,),
                 SizedBox(height: 10.h,),
                 Expanded(child: ListView.separated(
-                    itemBuilder: (context, index) => Suraitem(
-                      surahmodel: constantmanger.surahList[index],index: index,
+                    itemBuilder: (context, index) =>
+                        Suraitem(
+                      surahmodel: constantmanger.surahList[filterlist[index]],index: filterlist[index],
                     ),
                     separatorBuilder: (context, index) =>Container(
                       margin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 5.h),
@@ -75,11 +88,28 @@ class Quraan extends StatelessWidget {
                         thickness: 1.h,
                       ),
                     ),
-                    itemCount: constantmanger.surahList.length),)
+                    itemCount: filterlist.length),)
               ],
             ),
           ),
         ),
     );
   }
+
+  void serachFunction(String text)
+  {
+    List<int>filtersearchlist=[];
+   for(int i=0;i<constantmanger.surahList.length;i++)
+     {
+       if(constantmanger.surahList[i].nameEn.toLowerCase().contains(text.toLowerCase())
+           ||constantmanger.surahList[i].nameAr.toLowerCase().contains(text.toLowerCase()))
+         {
+           filtersearchlist.add(i);
+         }
+     }
+
+    filterlist=filtersearchlist;
+    setState(() {});
+
+}
 }
