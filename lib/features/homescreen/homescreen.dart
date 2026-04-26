@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/resourses/imagemanger/image-manager.dart';
 
 import '../../core/resourses/color-manger/color-manager.dart';
@@ -59,9 +60,9 @@ Widget _buildicon( String icon,bool selected)
 {
   return
   selected?Container(
-    padding: EdgeInsets.symmetric(horizontal: 20,vertical: 6),
+    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 6.h),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(16.r),
       color: ColorManager.black.withOpacity(0.6),
 
     ),

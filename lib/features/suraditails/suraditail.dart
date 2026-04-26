@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/core/prefsmanger/prefsmanger.dart';
 import 'package:islami_app/core/resourses/color-manger/color-manager.dart';
 import 'package:islami_app/core/resourses/imagemanger/image-manager.dart';
 import 'package:islami_app/model/suradetailsarguments.dart';
@@ -16,14 +17,16 @@ class Suraditail extends StatefulWidget {
 
 class _SuraditailState extends State<Suraditail> {
 String content="";
+bool _loaded = false;
 
   @override
   Widget build(BuildContext context) {
   Suradetailsarguments suradetailsarguments=ModalRoute.of(context)!.settings.arguments as Suradetailsarguments;
-    if(content.isEmpty)
-      {
-        loadsuracontent(suradetailsarguments.index);
-      }
+    if (!_loaded) {
+      _loaded = true;
+      Prefsmanger.saveLastindexSura(suradetailsarguments.index);
+      loadsuracontent(suradetailsarguments.index);
+    }
     return Scaffold(
       appBar: AppBar(
         iconTheme:IconThemeData(
@@ -33,7 +36,7 @@ String content="";
         centerTitle: true,
         title: Text(suradetailsarguments.sura.nameEn, style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: 20.sp,
           color: ColorManager.primary_color
         ),),
       ),
@@ -48,7 +51,7 @@ String content="";
                Image.asset(ImageManager.left_corner),
                Text(suradetailsarguments.sura.nameAr,style: TextStyle(
                  fontWeight: FontWeight.bold,
-                 fontSize: 20,
+                 fontSize: 20.sp,
                    color: ColorManager.primary_color
                ),),
                Image.asset(ImageManager.right_corner)
@@ -63,7 +66,7 @@ String content="";
                CircularProgressIndicator(color: ColorManager.primary_color,)
                    :
                    Text(content, textDirection: TextDirection.rtl, style: TextStyle(
-                     fontSize: 24,
+                     fontSize: 24.sp,
                      fontWeight: FontWeight.bold,
                      color: ColorManager.primary_color)),
              )

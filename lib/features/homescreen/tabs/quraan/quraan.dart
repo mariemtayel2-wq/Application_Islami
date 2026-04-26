@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/resourses/color-manger/color-manager.dart';
 import 'package:islami_app/core/resourses/imagemanger/image-manager.dart';
 import 'package:islami_app/core/widget/custumtextfieled.dart';
-import 'package:islami_app/features/homescreen/tabs/quraan/container-mostresent.dart';
 import 'package:islami_app/features/homescreen/tabs/quraan/constantmanger.dart';
+import 'package:islami_app/features/homescreen/tabs/quraan/mostrecentlist.dart';
 
 import 'suraitem.dart';
 
@@ -34,8 +34,9 @@ class _QuraanState extends State<Quraan> {
              )
            ),
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 8.w,vertical: 4.h),
+            padding:  EdgeInsets.symmetric(horizontal: 8.w,vertical: 2.h),
             child: Column(
+              spacing: 5.h,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(ImageManager.islami_logo,),
@@ -48,23 +49,9 @@ class _QuraanState extends State<Quraan> {
                  imageIcon:ImageIcon(AssetImage(IconManager.quran)),
 
                 ),
-                SizedBox(height: 16.h,),
-                Text("Most Recently ", style: TextStyle(
 
-                  color: ColorManager.offwhite,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.start,),
-                SizedBox(height:130.h,
-                child:
 
-                  ListView.separated(
-
-                    scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) =>ContainerMostresent() ,
-                      separatorBuilder: (context, index) =>SizedBox(width: 14.w,)
-                      , itemCount: 10),),
+                Mostrecentlist(),
 
                 Text("Suras List", style: TextStyle(
 
@@ -73,11 +60,12 @@ class _QuraanState extends State<Quraan> {
                   fontWeight: FontWeight.bold,
                 ),
                   textAlign: TextAlign.start,),
-                SizedBox(height: 10.h,),
+
                 Expanded(child: ListView.separated(
                     itemBuilder: (context, index) =>
                         Suraitem(
                       surahmodel: constantmanger.surahList[filterlist[index]],index: filterlist[index],
+                      onTap: () => setState(() {}),
                     ),
                     separatorBuilder: (context, index) =>Container(
                       margin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 5.h),

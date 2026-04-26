@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/core/resourses/color-manger/color-manager.dart';
 import 'package:islami_app/core/resourses/imagemanger/image-manager.dart';
+import 'package:islami_app/model/suramodel.dart';
 
 class ContainerMostresent extends StatelessWidget {
-  const ContainerMostresent({super.key});
-
+ ContainerMostresent({super.key,required this.sura});
+final SurahModel sura;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,20 +26,21 @@ class ContainerMostresent extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Al-Anbiya",style: TextStyle(
+                Text(sura.nameEn,style: TextStyle(
                   color: ColorManager.black,
-                  fontSize: 24.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),),
-                Text("الأنبياء",style: TextStyle(
+                Text(sura.nameAr,style: TextStyle(
                   color: ColorManager.black,
-                  fontSize: 24.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),),
 
-                Text("112",style: TextStyle(
+                Text(
+                " ${sura.ayahCount} Verses",style: TextStyle(
                   color: ColorManager.black,
-                  fontSize: 24.sp,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),),
 

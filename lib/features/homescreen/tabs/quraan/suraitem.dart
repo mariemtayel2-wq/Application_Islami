@@ -7,14 +7,20 @@ import 'package:islami_app/model/suradetailsarguments.dart';
 import 'package:islami_app/model/suramodel.dart';
 
 class Suraitem extends StatelessWidget {
- Suraitem({super.key, required this.surahmodel, required this.index});
+ Suraitem({super.key, required this.surahmodel, required this.index, this.onTap});
 final SurahModel surahmodel;
 final int index;
+final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.pushNamed(context, RouteManager.suraditails,arguments: Suradetailsarguments(sura: surahmodel, index: index));
+      onTap: () async {
+        await Navigator.pushNamed(
+          context,
+          RouteManager.suraditails,
+          arguments: Suradetailsarguments(sura: surahmodel, index: index),
+        );
+        onTap?.call();
       },
       child: Container(
         child:Row(
@@ -25,7 +31,7 @@ final int index;
               children: [
                 Image.asset(ImageManager.suraitemnumber,),
                 Text("${surahmodel.number}",style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                   color: ColorManager.white,
                 ),)
@@ -35,12 +41,12 @@ final int index;
             Column(
               children: [
                 Text(surahmodel.nameEn,style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                   color: ColorManager.white,
                 ),),
                 Text("${surahmodel.ayahCount} Verses  ",style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                   color: ColorManager.white,
                 ),),
@@ -49,7 +55,7 @@ final int index;
             ),
             Spacer(),
             Text(surahmodel.nameAr,style: TextStyle(
-              fontSize: 20,
+              fontSize: 20.sp,
               fontWeight: FontWeight.bold,
               color: ColorManager.white,
             ),)

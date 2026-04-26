@@ -19,6 +19,8 @@ abstract class ImageManager {
   static const String bottom_corner="${_base}img_bottom_decoration.png";
   static const String suraitemnumber="${_base}Group.png";
   static const String image_mostrecent="${_base}image_most_recent.png";
+  static const String sebha_head="${_base}Group 37.png";
+  static const String sebha_body="${_base}SebhaBody 1.png";
 
 
 }

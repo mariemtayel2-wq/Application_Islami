@@ -26,7 +26,7 @@ class _HadithitemState extends State<Hadithitem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         color: ColorManager.primary_color,
@@ -40,24 +40,27 @@ class _HadithitemState extends State<Hadithitem> {
          Stack(
            alignment: Alignment.center,
              children: [
-               Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      ImageManager.left_corner,
+               Padding(
+                 padding:  EdgeInsets.symmetric(vertical: 4.h),
+                 child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        ImageManager.left_corner,
 
-                      color: ColorManager.black,
-                    ),
-                    Image.asset(
-                      ImageManager.right_corner,
+                        color: ColorManager.black,
+                      ),
+                      Image.asset(
+                        ImageManager.right_corner,
 
-                      color: ColorManager.black,
-                    ),
-                  ],
-                ),
+                        color: ColorManager.black,
+                      ),
+                    ],
+                  ),
+               ),
                if (title.isNotEmpty)
                  Padding(
-                   padding: EdgeInsets.symmetric(horizontal: 12.w),
+                   padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 4.h),
                    child: Text(
                      title,
                      textAlign: TextAlign.center,

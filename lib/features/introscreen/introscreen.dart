@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:islami_app/core/resourses/imagemanger/image-manager.dart';
 import 'package:islami_app/core/route-manager/route_manager.dart';
@@ -149,7 +150,7 @@ class _IntroscreenState extends State<Introscreen> {
           showNextButton: true,
           showDoneButton: true,
           showSkipButton: true,
-          controlsPadding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+          controlsPadding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 12.h),
           next: const Text(
             "Next",
             style: TextStyle(color: Color(0xffE2BE7F)),
@@ -161,15 +162,15 @@ class _IntroscreenState extends State<Introscreen> {
           ),
           globalBackgroundColor: const Color(0xff202020),
           dotsDecorator: DotsDecorator(
-            size: const Size(8, 8),
-            activeSize: const Size(22, 8),
+            size: Size(8.r, 8.r),
+            activeSize: Size(22.w, 8.h),
             color: Colors.grey,
             activeColor: Color(0xffE2BE7F),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(50.r),
             ),
             activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(50.r),
             ),
           ),
 
